@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Archivo Black';
+    height: 100vh;
+    background-color: #080808;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #E4DDDB;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 3rem;
+}
+
+h1 span {
+    color: #BA1F00;
+}
+
+#countdown {
+    font-family: 'Orbitron', cursive;
+    font-size: 100px;
+    letter-spacing: 5px;
+    color: #BA1F00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time-segment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    margin-right: 120px;
+}
+
+.time-segment span {
+    font-size: 100px;
+    line-height: 1;
+    text-align: center;
+    display: inline-block;
+}
+
+#countdown span#days,
+#countdown span#hours,
+#countdown span#minutes,
+#countdown span#seconds {
+    font-size: 100px;
+    padding: 0 10px;
+}
+
+.time-segment span:not(#seconds) {
+    margin-right: 10px; /* Espacio entre los números y los dos puntos */
+}
+.time-segment:last-child {
+    margin-right: 0;
+}
+
+button {
+    color: #BA1F00;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    font-style: italic;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    border-bottom: 2px solid #BA1F00;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    background-color: #0c0c0c;
+    border-top: 1px solid #BA1F00;
+    justify-content: space-between;
+}
+
+footer img {
+    width: 50px;
+}
+
+footer p {
+    font-family: 'Fustat';
+    position: relative;
+    top: 5px;
+}
+
