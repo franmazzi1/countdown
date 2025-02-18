@@ -1,7 +1,6 @@
 let countdown;
 let notifyEnabled = false;
 
-
 // Solicitar permiso para las notificaciones
 document.getElementById("notify").addEventListener("click", () => {
     if (Notification.permission === "granted") {
@@ -22,7 +21,6 @@ document.getElementById("notify").addEventListener("click", () => {
 });
 
 // Establece la fecha y hora de la cuenta regresiva
-
 const countDownDate = new Date("March 1, 2025 00:00:00").getTime();
 
 // Actualiza el contador cada segundo
@@ -52,9 +50,6 @@ let x = setInterval(function() {
     }
 }, 1000);
 
-// Iniciar la cuenta regresiva al cargar la página
-startCountdown();
-
 // Función para enviar una notificación
 function sendNotification() {
     if (Notification.permission === "granted") {
@@ -66,4 +61,5 @@ function sendNotification() {
         console.error("No se puede enviar la notificación. Permiso denegado.");
     }
 }
+
 

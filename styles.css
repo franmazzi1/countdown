@@ -7,7 +7,7 @@
 body {
     font-family: 'Archivo Black';
     height: 100vh;
-    background-color: #080808;
+    background-color: #050505;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,7 +22,7 @@ body {
 }
 
 h1 {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     font-size: 3rem;
 }
 
@@ -44,8 +44,8 @@ h1 span {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100px;
-    margin-right: 120px;
+    width: 250px;
+
 }
 
 .time-segment span {
@@ -66,24 +66,22 @@ h1 span {
 .time-segment span:not(#seconds) {
     margin-right: 10px; /* Espacio entre los números y los dos puntos */
 }
-.time-segment:last-child {
-    margin-right: 0;
-}
+
 
 button {
     color: #BA1F00;
-    padding: 10px 20px;
+    padding: 7px;
     font-size: 1.5rem;
     font-weight: bolder;
-    font-style: italic;
     border: none;
     background-color: transparent;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 60px;
 }
 
 button:hover {
-    border-bottom: 2px solid #BA1F00;
+    border-bottom: 1px solid #BA1F00;
+    font-style: italic;
 }
 
 footer {
@@ -98,12 +96,86 @@ footer {
 }
 
 footer img {
-    width: 50px;
+    width: 40px;
+    height: 40px;
+}
+footer a {
+    transition: all 0.3s;
 }
 
-footer p {
-    font-family: 'Fustat';
-    position: relative;
-    top: 5px;
+footer a:hover {
+    filter: brightness(0) invert(1);
 }
 
+
+@media (min-width:550px) and (max-width: 900px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    #countdown {
+        font-size: 60px;
+    }
+
+    .time-segment {
+        width: 150px;  /* Reducir aún más el tamaño */
+    }
+
+    .time-segment span {
+        font-size: 60px; /* Reducir aún más el tamaño de los números */
+    }
+    #countdown span#days,
+    #countdown span#hours,
+    #countdown span#minutes,
+    #countdown span#seconds {
+        font-size: 60px;
+        padding: 0 5px;
+    }
+    .time-segment span:not(#seconds) {
+        margin-right: 5px; /* Espacio entre los números y los dos puntos */
+    }
+
+}
+@media (max-width: 550px) {
+    h1 {
+        font-size: 1.25rem;
+    }
+
+    #countdown {
+        font-size: 30px;
+    }
+
+    .time-segment {
+        width: 80px;  /* Reducir aún más el tamaño */
+    }
+
+    .time-segment span {
+        font-size: 30px; /* Reducir aún más el tamaño de los números */
+    }
+    #countdown span#days,
+    #countdown span#hours,
+    #countdown span#minutes,
+    #countdown span#seconds {
+        font-size: 30px;
+        padding: 0 3px;
+    }
+    .time-segment span:not(#seconds) {
+        margin-right: 3px; /* Espacio entre los números y los dos puntos */
+    }
+    button {
+        color: #BA1F00;
+        padding: 5px;
+        font-size: 1rem;
+        margin-top: 40px;
+    }
+    footer {
+        padding:8px;
+    }
+    
+    footer img {
+        width: 20px;
+        height: 20px;
+    }
+    
+    
+}
