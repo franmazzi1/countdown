@@ -21,7 +21,7 @@ document.getElementById("notify").addEventListener("click", () => {
 });
 
 // Establece la fecha y hora de la cuenta regresiva
-const countDownDate = new Date("February 17, 2025 23:40:00").getTime();
+const countDownDate = new Date("March 1, 2025 12:00:00").getTime();
 
 // Actualiza el contador cada segundo
 let x = setInterval(function() {
