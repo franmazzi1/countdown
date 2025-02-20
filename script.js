@@ -1,35 +1,36 @@
 let countdown;
 let notifyEnabled = false;
 
-// Obtener referencia al botón de notificación
-const notifyButton = document.getElementById("notify");
-
-// Solicitar permiso para las notificaciones y agregar al calendario
-notifyButton.addEventListener("click", () => {
-    if (Notification.permission === "granted") {
-        notifyEnabled = true;
-        alert("Notificaciones activadas.");
-        addGoogleCalendarEvent(); 
-    } else if (Notification.permission !== "denied") {
-        Notification.requestPermission().then(permission => {
-            if (permission === "granted") {
-                notifyEnabled = true;
-                alert("Notificaciones activadas.");
-                addGoogleCalendarEvent(); 
-            } else {
-                alert("No se han activado las notificaciones.");
-            }
-        });
+// Botón para activar notificaciones
+document.getElementById("notify").addEventListener("click", () => {
+    if ("Notification" in window) {
+        if (Notification.permission === "granted") {
+            notifyEnabled = true;
+            alert("Notificaciones activadas.");
+            scheduleEvent(); // Agregar evento al calendario
+        } else if (Notification.permission !== "denied") {
+            Notification.requestPermission().then(permission => {
+                if (permission === "granted") {
+                    notifyEnabled = true;
+                    alert("Notificaciones activadas.");
+                    scheduleEvent(); // Agregar evento al calendario
+                } else {
+                    alert("No se han activado las notificaciones.");
+                }
+            });
+        } else {
+            alert("Las notificaciones están deshabilitadas.");
+        }
     } else {
-        alert("Las notificaciones están deshabilitadas.");
+        alert("Tu navegador no admite notificaciones.");
     }
 });
 
-// Establece la fecha y hora de la cuenta regresiva
+// Configuración de la cuenta regresiva
 const countDownDate = new Date("March 1, 2025 12:00:00").getTime();
 
 // Actualiza el contador cada segundo
-let x = setInterval(function () {
+let x = setInterval(() => {
     let now = new Date().getTime();
     let distance = countDownDate - now;
 
@@ -43,15 +44,11 @@ let x = setInterval(function () {
     document.getElementById("minutes").innerHTML = (minutes < 10 ? "0" : "") + minutes;
     document.getElementById("seconds").innerHTML = (seconds < 10 ? "0" : "") + seconds;
 
-    
+    // Si la cuenta regresiva ha terminado
     if (distance < 0) {
         clearInterval(x);
         document.getElementById("countdown").innerHTML = "Ya viene el KAOS";
-
-        
-        if (notifyEnabled) {
-            sendNotification();
-        }
+        if (notifyEnabled) sendNotification();
     }
 }, 1000);
 
@@ -63,24 +60,60 @@ function sendNotification() {
             icon: "./resources/KAOS3.png"
         });
     } else {
-        console.error("No se puede enviar la notificación. Permiso denegado.");
+        alert("¡El KAOS ha llegado! Entra a ver las novedades que hay.");
     }
 }
 
-// Función para agregar evento a Google Calendar
+// Función para programar un evento en el calendario
+function scheduleEvent() {
+    if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+        downloadICSFile(); // iOS: Descarga un archivo .ics
+    } else {
+        addGoogleCalendarEvent(); // Android & Desktop: Agrega a Google Calendar
+    }
+}
+
+// Función para agregar un evento en Google Calendar
 function addGoogleCalendarEvent() {
     const title = encodeURIComponent("¡El KAOS ha llegado!");
     const details = encodeURIComponent("Entra a ver las novedades que hay.");
     const location = encodeURIComponent("https://tu-sitio.com");
 
-    
-    let eventDate = new Date(countDownDate);
-    let startDate = eventDate.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z"; 
+    let startDate = new Date(countDownDate).toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+    let endDate = new Date(countDownDate + 30 * 60000).toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
 
-    
-    let endDate = new Date(eventDate.getTime() + 30 * 60000).toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${startDate}/${endDate}`;
 
-    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${startDate}/${endDate}`;
+    window.open(googleCalendarUrl, "_blank");
+}
 
-    window.open(url, "_blank");
+// Función para descargar un archivo .ics para Apple Calendar
+function downloadICSFile() {
+    const eventTitle = "¡El KAOS ha llegado!";
+    const eventDescription = "Entra a ver las novedades que hay.";
+    const eventLocation = "https://tu-sitio.com";
+
+    let startDate = new Date(countDownDate).toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+    let endDate = new Date(countDownDate + 30 * 60000).toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+
+    const icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+SUMMARY:${eventTitle}
+DESCRIPTION:${eventDescription}
+LOCATION:${eventLocation}
+DTSTART:${startDate}
+DTEND:${endDate}
+END:VEVENT
+END:VCALENDAR`;
+
+    const blob = new Blob([icsContent], { type: "text/calendar" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "evento.ics";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 }
