@@ -44,7 +44,7 @@ let x = setInterval(() => {
     document.getElementById("minutes").innerHTML = (minutes < 10 ? "0" : "") + minutes;
     document.getElementById("seconds").innerHTML = (seconds < 10 ? "0" : "") + seconds;
 
-    // Si la cuenta regresiva ha terminado
+    
     if (distance < 0) {
         clearInterval(x);
         document.getElementById("countdown").innerHTML = "Ya viene el KAOS";
@@ -67,9 +67,9 @@ function sendNotification() {
 // Función para programar un evento en el calendario
 function scheduleEvent() {
     if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
-        downloadICSFile(); // iOS: Descarga un archivo .ics
+        downloadICSFile();
     } else {
-        addGoogleCalendarEvent(); // Android & Desktop: Agrega a Google Calendar
+        addGoogleCalendarEvent();
     }
 }
 
@@ -77,7 +77,7 @@ function scheduleEvent() {
 function addGoogleCalendarEvent() {
     const title = encodeURIComponent("¡El KAOS ha llegado!");
     const details = encodeURIComponent("Entra a ver las novedades que hay.");
-    const location = encodeURIComponent("https://tu-sitio.com");
+    const location = encodeURIComponent("https://kaosaudiovisual.com/");
 
     let startDate = new Date(countDownDate).toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
     let endDate = new Date(countDownDate + 30 * 60000).toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
@@ -91,8 +91,7 @@ function addGoogleCalendarEvent() {
 function downloadICSFile() {
     const eventTitle = "¡El KAOS ha llegado!";
     const eventDescription = "Entra a ver las novedades que hay.";
-    const eventLocation = "https://tu-sitio.com";
-
+    const eventLocation = "https://kaosaudiovisual.com/";
     let startDate = new Date(countDownDate).toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
     let endDate = new Date(countDownDate + 30 * 60000).toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
 
@@ -104,6 +103,11 @@ DESCRIPTION:${eventDescription}
 LOCATION:${eventLocation}
 DTSTART:${startDate}
 DTEND:${endDate}
+BEGIN:VALARM
+TRIGGER:-PT10M
+ACTION:DISPLAY
+DESCRIPTION:¡El KAOS está por comenzar!
+END:VALARM
 END:VEVENT
 END:VCALENDAR`;
 
@@ -116,4 +120,7 @@ END:VCALENDAR`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+
+    alert("Se ha agregado un recordatorio en tu calendario.");
 }
+
