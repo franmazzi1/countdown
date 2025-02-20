@@ -1,16 +1,21 @@
 let countdown;
 let notifyEnabled = false;
 
-// Solicitar permiso para las notificaciones
-document.getElementById("notify").addEventListener("click", () => {
+// Obtener referencia al botón de notificación
+const notifyButton = document.getElementById("notify");
+
+// Solicitar permiso para las notificaciones y agregar al calendario
+notifyButton.addEventListener("click", () => {
     if (Notification.permission === "granted") {
         notifyEnabled = true;
         alert("Notificaciones activadas.");
+        addGoogleCalendarEvent(); 
     } else if (Notification.permission !== "denied") {
         Notification.requestPermission().then(permission => {
             if (permission === "granted") {
                 notifyEnabled = true;
                 alert("Notificaciones activadas.");
+                addGoogleCalendarEvent(); 
             } else {
                 alert("No se han activado las notificaciones.");
             }
@@ -24,7 +29,7 @@ document.getElementById("notify").addEventListener("click", () => {
 const countDownDate = new Date("March 1, 2025 12:00:00").getTime();
 
 // Actualiza el contador cada segundo
-let x = setInterval(function() {
+let x = setInterval(function () {
     let now = new Date().getTime();
     let distance = countDownDate - now;
 
@@ -38,12 +43,12 @@ let x = setInterval(function() {
     document.getElementById("minutes").innerHTML = (minutes < 10 ? "0" : "") + minutes;
     document.getElementById("seconds").innerHTML = (seconds < 10 ? "0" : "") + seconds;
 
-    // Si la cuenta regresiva ha terminado, mostrar mensaje y enviar notificación
+    
     if (distance < 0) {
         clearInterval(x);
         document.getElementById("countdown").innerHTML = "Ya viene el KAOS";
+
         
-        // Enviar notificación si está activada
         if (notifyEnabled) {
             sendNotification();
         }
@@ -60,4 +65,22 @@ function sendNotification() {
     } else {
         console.error("No se puede enviar la notificación. Permiso denegado.");
     }
+}
+
+// Función para agregar evento a Google Calendar
+function addGoogleCalendarEvent() {
+    const title = encodeURIComponent("¡El KAOS ha llegado!");
+    const details = encodeURIComponent("Entra a ver las novedades que hay.");
+    const location = encodeURIComponent("https://tu-sitio.com");
+
+    
+    let eventDate = new Date(countDownDate);
+    let startDate = eventDate.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z"; 
+
+    
+    let endDate = new Date(eventDate.getTime() + 30 * 60000).toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+
+    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${startDate}/${endDate}`;
+
+    window.open(url, "_blank");
 }
