@@ -1,126 +1,42 @@
-let countdown;
-let notifyEnabled = false;
+document.getElementById("menu-toggle").addEventListener("click", function() {
+    document.getElementById("nav-links").classList.toggle("active");
+});
 
-// Botón para activar notificaciones
-document.getElementById("notify").addEventListener("click", () => {
-    if ("Notification" in window) {
-        if (Notification.permission === "granted") {
-            notifyEnabled = true;
-            alert("Notificaciones activadas.");
-            scheduleEvent(); // Agregar evento al calendario
-        } else if (Notification.permission !== "denied") {
-            Notification.requestPermission().then(permission => {
-                if (permission === "granted") {
-                    notifyEnabled = true;
-                    alert("Notificaciones activadas.");
-                    scheduleEvent(); // Agregar evento al calendario
-                } else {
-                    alert("No se han activado las notificaciones.");
-                }
-            });
-        } else {
-            alert("Las notificaciones están deshabilitadas.");
-        }
-    } else {
-        alert("Tu navegador no admite notificaciones.");
+let currentIndex = 0;
+const sections = document.querySelectorAll("section");
+
+function scrollToSection(index) {
+    if (index >= 0 && index < sections.length) {
+        sections[index].scrollIntoView({ behavior: "smooth" });
+        currentIndex = index;
+    }
+}
+
+function scrollUp() {
+    scrollToSection(currentIndex - 1);
+}
+
+function scrollDown() {
+    scrollToSection(currentIndex + 1);
+}
+
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowDown") {
+        scrollDown();
+    } else if (event.key === "ArrowUp") {
+        scrollUp();
     }
 });
 
-// Configuración de la cuenta regresiva
-const countDownDate = new Date("March 1, 2025 12:00:00").getTime();
+function enviarEmail(pack) {
+    const email = "agenciakaos4@gmail.com";
+    const subject = encodeURIComponent(`Consulta sobre ${pack}`);
+    const body = encodeURIComponent(
+        `Hola, estoy interesado en el pack "${pack}".\n\nMe gustaría recibir más información.\n\nGracias.`
+    );
 
-// Actualiza el contador cada segundo
-let x = setInterval(() => {
-    let now = new Date().getTime();
-    let distance = countDownDate - now;
-
-    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    document.getElementById("days").innerHTML = (days < 10 ? "0" : "") + days;
-    document.getElementById("hours").innerHTML = (hours < 10 ? "0" : "") + hours;
-    document.getElementById("minutes").innerHTML = (minutes < 10 ? "0" : "") + minutes;
-    document.getElementById("seconds").innerHTML = (seconds < 10 ? "0" : "") + seconds;
-
-    
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("countdown").innerHTML = "Ya viene el KAOS";
-        if (notifyEnabled) sendNotification();
-    }
-}, 1000);
-
-// Función para enviar una notificación
-function sendNotification() {
-    if (Notification.permission === "granted") {
-        new Notification("¡El KAOS ha llegado!", {
-            body: "Entra a ver las novedades que hay",
-            icon: "./resources/KAOS3.png"
-        });
-    } else {
-        alert("¡El KAOS ha llegado! Entra a ver las novedades que hay.");
-    }
+    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
 }
 
-// Función para programar un evento en el calendario
-function scheduleEvent() {
-    if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
-        downloadICSFile();
-    } else {
-        addGoogleCalendarEvent();
-    }
-}
-
-// Función para agregar un evento en Google Calendar
-function addGoogleCalendarEvent() {
-    const title = encodeURIComponent("¡El KAOS ha llegado!");
-    const details = encodeURIComponent("Entra a ver las novedades que hay.");
-    const location = encodeURIComponent("https://kaosaudiovisual.com/");
-
-    let startDate = new Date(countDownDate).toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
-    let endDate = new Date(countDownDate + 30 * 60000).toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
-
-    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${startDate}/${endDate}`;
-
-    window.open(googleCalendarUrl, "_blank");
-}
-
-// Función para descargar un archivo .ics para Apple Calendar
-function downloadICSFile() {
-    const eventTitle = "¡El KAOS ha llegado!";
-    const eventDescription = "Entra a ver las novedades que hay.";
-    const eventLocation = "https://kaosaudiovisual.com/";
-    let startDate = new Date(countDownDate).toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
-    let endDate = new Date(countDownDate + 30 * 60000).toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
-
-    const icsContent = `BEGIN:VCALENDAR
-VERSION:2.0
-BEGIN:VEVENT
-SUMMARY:${eventTitle}
-DESCRIPTION:${eventDescription}
-LOCATION:${eventLocation}
-DTSTART:${startDate}
-DTEND:${endDate}
-BEGIN:VALARM
-TRIGGER:-PT10M
-ACTION:DISPLAY
-DESCRIPTION:¡El KAOS está por comenzar!
-END:VALARM
-END:VEVENT
-END:VCALENDAR`;
-
-    const blob = new Blob([icsContent], { type: "text/calendar" });
-    const url = URL.createObjectURL(blob);
-
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "evento.ics";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-
-    alert("Se ha agregado un recordatorio en tu calendario.");
-}
 

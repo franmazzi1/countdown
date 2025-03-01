@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaos</title>
+    <title>KAOS</title>
     <link rel="stylesheet" href="styles.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fustat:wght@200..800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&display=swap" rel="stylesheet">
-
+    
     <link
       rel="icon"
       href="resources/KAOS3.png"
@@ -40,42 +42,143 @@
 
     
     
+
 </head>
 <body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="#" onclick="location.reload(); return false;">
+                    <img src="resources/logo.png" alt="LOGO KAOS">
+                </a>                
+            </div>
+            <div class="menu-toggle" id="menu-toggle">☰</div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#section2">Método</a></li>
+                <li><a href="#section3">Servicios</a></li>
+                <li><a href="contact/index.html">Contacto</a></li>
+            </ul>
+            
+        </nav>
+    </header>
+
+
+
     <main>
-        <div class="container">
-            <h1>El <span>KAOS </span> se aproxima</h1>
-            <div id="countdown">
-                <div class="time-segment">
-                    <span id="days">00</span>
-                    <span>:</span>
+
+        <section class="kaos-container" id="section1">
+            <div class="text-container">
+                <div class="title">
+                    <img src="resources/logo.png" alt="KAOS">
+                    <p>Agencia Audiovisual</p>
                 </div>
-                <div class="time-segment">
-                    <span id="hours">00</span>
-                    <span>:</span>
-                </div>
-                <div class="time-segment">
-                    <span id="minutes">00</span>
-                    <span>:</span>
-                </div>
-                <div class="time-segment">
-                    <span id="seconds">00</span>
+                <div class="description">
+                    <h3>"Desorden creativo, resultados únicos"</h3>
+                    <p><span>KAOS</span> es una agencia creativa audiovisual que rompe con lo convencional, apostando por el "Tiempo Creativo" en cada proyecto. Diseñamos marcas, contenido y experiencias visuales sin automatización, con dedicación real y una identidad única.</p>
                 </div>
             </div>
             
-            
-            <button id="notify">Activar Notificación</button>
-        </div>
+        </section>
+        <section class="method-section" id="section2">
+            <div class="method-header">
+                <h2 class="method-title">NUESTRO MÉTODO</h2>
+                <p class="method-description">
+                    Queremos seguir un método no tradicional para producir y queremos que vos seas parte. Creemos que en gran parte del mundo digital hay una desconexión empresa-marca porque los solicitantes no forman parte del proceso creativo al momento de solicitar su pieza. En Kaos, queremos romper esta estructura y que te sumerjas con nosotros y tengas una experiencia creativa. Esto se aplica si el proyecto lo permite.
+                </p>
+            </div>
+        
+            <div class="method-steps">
+                <div class="method-step">
+                    <div class="method-number">1</div>
+                    <h3>Exploración & Briefing</h3>
+                    <p>Te hacemos girar una ruleta que desbloquea nuevas oportunidades dentro de tu proyecto. <br>
+                    Te enviamos una documento con preguntas no convencionales para saber tu visión.</p>
+                </div>
+                <div class="method-step">
+                    <div class="method-number">2</div>
+                    <h3>Conceptualización</h3>
+                    <p>Vas a tirar un dado virtual y según el número que salga tenés un desafio con tu marca. Desarrollamos ideas, bosquejos y propuestas visuales que definan el tono y el estilo del proyecto.</p>
+                </div>
+                <div class="method-step">
+                    <div class="method-number">3</div>
+                    <h3>Producción</h3>
+                    <p>Ponemos en marcha la magia. En esta etapa, cada pieza toma forma.<br>
+                        Aqui hay 2 revisiones.</p>
+                </div>
+                <div class="method-step">
+                    <div class="method-number">4</div>
+                    <h3>Ajustes</h3>
+                    <p>Refinamos y
+                        optimizamos el
+                        contenido para
+                        garantizar que
+                        cumpla con los
+                        objetivos y tenga el
+                        máximo impacto. <br>
+                        
+                        Última revisión.</p>
+                </div>
+                <div class="method-step">
+                    <div class="method-number">5</div>
+                    <h3>Final</h3>
+                    <p>Juego decisivo final. <br>
+
+                        Te enviamos el
+                        proyecto en el
+                        formato acordado y
+                        te acompañamos
+                        en su distribución.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="service-container" id="section3">
+            <div>
+                <h5>PACK 1</h5>
+                <h7>BRANDING BASE</h7>
+                <ul>
+                    <li>Logo principal</li>
+                    <li>Version Secundaria</li>
+                    <li>Paleta de Colores</li>
+                    <li>Tipografías</li>
+                </ul>
+                <button onclick="enviarEmail('Branding Base')">Contactar Pack</button>
+            </div>
+            <div>
+                <h5>PACK 2</h5>
+                <h7>BRANDING COMPLETO</h7>
+                <ul>
+                    <li><span>Branding Base</span></li>
+                    <li>Manual de Marca</li>
+                    <li>Iconografía personalizada</li>
+                    <li>Diseño de piezas básicas</li>
+                </ul>
+                <button onclick="enviarEmail('Branding Completo')">Contactar Pack</button>
+            </div>
+            <div>
+                <h5>PACK 3</h5>
+                <h7>BRANDING 360</h7>
+                <ul>
+                    <li><span>Branding Completo</span></li>
+                    <li>Estrategia de marca</li>
+                    <li>Diseño de identidad en redes</li>
+                    <li>Plantillas editables</li>
+                </ul>
+                <button onclick="enviarEmail('Branding 360')">Contactar Pack</button>
+            </div>
+        </section>
     </main>
+
     <footer>
-        <a href="https://kaosaudiovisual.com"><img src="resources/KAOS3.png" alt="K logo"></a>
+        <img src="resources/KAOS3.png" alt="K logo">
+        <a href="mailto:agenciakaos4@gmail.com">agenciakaos4@gmail.com</a>
         <div>
             <a href="https://www.instagram.com/kaoscreativo.ar/?utm_source=ig_web_button_share_sheet"><img src="resources/icon-ig.png" alt="Instagram"></a>
             <a href="https://www.facebook.com/people/Kaos/61573528798927/#"><img src="resources/facebook.png" alt="Facebook"></a>
-            <a href="https://www.behance.net/kaosagencia"><img src="resources/behance.png" alt="Behance"></a>
+            <a href="https://www.behance.net/kaosagencia" ><img src="resources/behance.png" alt="Behance"></a>
         </div>
+        
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
