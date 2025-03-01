@@ -398,6 +398,18 @@ html {
         width: 90%;
         margin-bottom: 20px;
     }
+
+    
+    .last-section-container h2 {
+        font-size: 3rem;
+    }
+    
+    .last-section-container p {
+        font-size: 1rem;
+        margin-top: 10px;
+        color: #E4DDDB;
+    }
+
     footer div{
         display: none;
     }
