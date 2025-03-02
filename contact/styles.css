@@ -83,7 +83,12 @@ nav {
     transition: all 0.3s;
     white-space: nowrap; 
 }
-
+.nav-links .active-link{
+    color: #E4DDDB;
+}
+.nav-links .active-link:hover{
+    color: #BA1F00;
+}
 .nav-links a:hover {
     color: #E4DDDB;
 }

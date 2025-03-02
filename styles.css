@@ -197,7 +197,7 @@ section {
 /* Estilos de cada paso */
 .method-step {
     width: 18%;
-    text-align: justify ;
+    text-align: left ;
     position: relative;
     padding: 20px;
     border-radius: 20px;
@@ -246,19 +246,26 @@ section {
 }
 
 .last-section-container h2 {
-    font-size: 7rem;
-    margin: 20px 0;
-    color: #BA1F00;
+    font-size: 8vw;
+    margin: 10px 0;
+    color: #E4DDDB ;
+    
+    font-weight: 900;
+    
 }
 
 .last-section-container p {
-    font-size: 2rem;
-    color: #0D0C0C ;
+    font-size: 3vw;
+    color: #E4DDDB ;
     margin-top: 10px;
+    font-weight: 600; 
+    
+    
 }
 
-
-
+.last-section-container b{
+    color: #BA1F00;
+}
 /* ------------- FOOTER ------------- */
 footer {
     position: relative;
@@ -353,9 +360,8 @@ html {
         margin-bottom: 10px;
     }
     .title p{
-        font-size: 0.75rem;
+        font-size: 1rem;
     }
-
     .description {
         border-left: none;
         border-top: 1px solid #BA1F00;
@@ -399,17 +405,9 @@ html {
         margin-bottom: 20px;
     }
 
-    
-    .last-section-container h2 {
-        font-size: 3rem;
+    .last-section-container{
+        padding: 0;
     }
-    
-    .last-section-container p {
-        font-size: 1rem;
-        margin-top: 10px;
-        color: #E4DDDB;
-    }
-
     footer div{
         display: none;
     }
