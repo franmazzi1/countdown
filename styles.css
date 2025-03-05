@@ -279,8 +279,8 @@ footer {
     align-items: center;
 }
 footer img{
-    width: 40px;
-    height: 35px;
+    width: 50px;
+    height: 45px;
 }
 footer a {
     color: #BA1F00;
@@ -301,6 +301,17 @@ footer a {
 
 footer a:hover {
     filter: brightness(0) invert(1);
+}
+.contact{
+    text-align: justify;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.contact img{
+    position: relative;
+    top: 7px;
+    margin-right: 10px;
 }
 
 /* ------------- SCROLL ENTRE SECCIONES ------------- */
@@ -410,11 +421,18 @@ html {
     }
     footer div{
         display: none;
+        
     }
     footer a{
         font-size: 0.875rem;
 
     }
+    
+    .contact a{
+        font-size: 0;
+        
+    }
+    
     
     
 

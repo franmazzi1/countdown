@@ -181,14 +181,14 @@ footer {
     width: 100%;
     padding: 20px;
     display: flex;
-    background-color: #202020;
+    background-color: #0D0C0C;
     border-top: 1px solid #BA1F00;
     justify-content: space-between;
     align-items: center;
 }
 footer img{
-    width: 40px;
-    height: 35px;
+    width: 50px;
+    height: 45px;
 }
 footer a {
     color: #BA1F00;
@@ -210,8 +210,17 @@ footer a {
 footer a:hover {
     filter: brightness(0) invert(1);
 }
-
-
+.contact{
+    text-align: justify;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.contact img{
+    position: relative;
+    top: 7px;
+    margin-right: 10px;
+}
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
@@ -254,4 +263,9 @@ footer a:hover {
         font-size: 0.875rem;
 
     }
+    .contact a{
+        font-size: 0;
+        
+    }
+    
 }
