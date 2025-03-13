@@ -6,25 +6,26 @@
 
 body {
     height: 100vh;
-    color: #BA1F00;
+    color: #E4DDDB;
     font-family: 'Fustat', sans-serif;
+    background-color: #0D0C0C;
+    padding-top: 30px; 
+    overflow-x: hidden;
+    background-attachment: fixed;
     background-image: url(../resources/background.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    padding-top: 80px; 
-    overflow-x: hidden;
-    background-attachment: fixed;
 }
 
-/* Hacer que el body y main ocupen toda la pantalla */
+
 html, body {
     height: 100%;
     display: flex;
     flex-direction: column;
 }
 
-/* Hacer que el main crezca para empujar el footer */
+
 main {
     flex: 1;
 }
@@ -93,109 +94,99 @@ nav {
     color: #E4DDDB;
 }
 
-/* ------------- FORMULARIO DE CONTACTO ------------- */
-
-.contacto {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 30px;
-    width: 95%;
-    max-width: 1000px;
+/*-----------INTRO SECTION-----------*/
+.intro-section {
     text-align: center;
-    padding: 50px 20px;
-    background-color: rgba(13, 12, 12, 0.9); /* Fondo oscuro semitransparente */
-    border: 2px solid #BA1F00;
-    margin: 50px auto;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    padding: 70px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.intro-header {
+    max-width: 800px;
+    width: 90%;
+    margin: 0 auto 30px;
+    
 }
 
-.contacto h2 {
-    font-size: 2rem;
-    color: #BA1F00;
-    margin-bottom: 10px;
-}
-
-.contacto p {
-    font-size: 1rem;
-    color: #E4DDDB;
+.intro-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-decoration: underline;
+    font-family: 'Archivo Black';
     margin-bottom: 20px;
+    color: #BA1F00;
+    
 }
 
-form {
+.intro-description {
+    font-size: 1rem;
+    text-align: justify;
+    color: #E4DDDB;
+    font-weight: bolder;
+}
+
+
+.services {
     display: flex;
     flex-direction: column;
-    gap: 15px;
     align-items: center;
+    gap: 50px;
+    padding: 80px 10%;
 }
 
-.input-group {
-    width: 100%;
-    max-width: 500px;
+.service {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    max-width: 900px;
+    border-top: 1px solid #BA1F00;
+    padding: 50px 0;
 }
 
-input, textarea {
-    width: 100%;
-    padding: 12px;
-    border: 2px solid #BA1F00;
-    background-color: #202020;
-    color: white;
-    font-size: 1rem;
-    font-family: 'Fustat', sans-serif;
-    border-radius: 5px;
-    outline: none;
-    transition: border 0.3s;
+.service:nth-child(even) {
+    flex-direction: row-reverse;
+    text-align: right;
 }
 
-input:focus, textarea:focus {
-    border-color: #E44C2A;
+.service-img img {
+    width: 200px;
+    height: auto;
+    transition: transform 0.5s ease-out;
 }
 
-textarea {
-    resize: none;
-    height: 120px;
+.service-text {
+    flex: 1;
 }
 
-button {
-    width: 100%;
-    max-width: 500px;
-    background-color: #BA1F00;
-    color: white;
-    padding: 12px;
-    border: none;
-    font-size: 1rem;
-    font-family: 'Fustat', sans-serif;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s;
-}
-
-button:hover {
-    background-color: #E44C2A;
-}
-
-.contactar img{
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-    position: relative;
-    top: 7px;
-}
-.contactar a{
+.service-text h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
     color: #BA1F00;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: all 0.3s;
+    padding: 10px;
+    border-radius: 30px;
+    border: 1px solid #BA1F00;
+    display: inline-block;
 }
-.contactar a:hover {
-    filter: brightness(0) invert(1);
-}
-.contactar h3{
+
+
+.service-text p {
+    font-size: 18px;
+    line-height: 1.6;
     color: #E4DDDB;
-    margin-bottom: 30px;
+    text-align: justify;
 }
+.service-text p b{
+    color: #BA1F00;
+    font-style: italic;
+}
+
+
+
+
+
 
 
 
@@ -246,6 +237,9 @@ footer a:hover {
     top: 7px;
     margin-right: 10px;
 }
+
+
+
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
@@ -278,9 +272,15 @@ footer a:hover {
     .nav-links li {
         margin: 10px 0;
     }
-    .contacto {
-        width: 90%;
+    .service{
+        flex-direction: column;
+        text-align: center;
     }
+    .service:nth-child(even) {
+        flex-direction: column;
+        text-align: center;
+    }
+
     footer div{
         display: none;
     }

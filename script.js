@@ -39,4 +39,18 @@ function enviarEmail(pack) {
     window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+    const sections = document.querySelectorAll(".section-container");
 
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+            } else {
+                entry.target.classList.remove("show");
+            }
+        });
+    }, { threshold: 0.2 });
+
+    sections.forEach((section) => observer.observe(section));
+});
