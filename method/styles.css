@@ -101,12 +101,12 @@ nav {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    position: relative; /* Añadir esto para que el contenido esté por encima de la imagen de fondo */
-    min-height: 100vh; /* Asegura que la sección ocupe al menos toda la altura de la ventana */
+    position: relative; 
+    min-height: 100vh; 
 }
 
 .backgroundimage {
-    position: absolute; /* Lo mantienes absoluto para que se quede fijo */
+    position: absolute; 
     top: 0;
     left: -100px;
     height: 100%;
@@ -248,6 +248,10 @@ footer a:hover {
 
 
 @media (max-width: 1000px) {
+    nav{
+        background: #0D0C0C;
+        border-bottom: 1px solid #BA1F00;
+    }
     .menu-toggle {
         display: block;
         cursor: pointer;
