@@ -3,11 +3,11 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+/*#202020*/
 body {
     color: #BA1F00;
     font-family: 'Fustat', sans-serif;
-    background-color: #202020;
+    background-color: #0D0C0C;
     overflow-x: hidden;
     background-attachment: fixed;
 }
@@ -18,13 +18,13 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #0D0C0C;
+    background: linear-gradient(0deg,#202020, #0D0C0C);
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
-    border-bottom: 2px solid #BA1F00;
+
 }
 
 .logo img {
@@ -138,106 +138,142 @@ section {
 }
 
 
-/* Estilos generales */
-.method-section {
-    text-align: center;
-    background-color: #0D0C0C;
-    color: #E4DDDB;
-    padding: 50px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+/*----------- METHOD SECTION -----------*/
+
+.section-kaos {
+    color: #E4DDDB; 
+    text-align: left;
+    padding: 60px 40px;
+    justify-content: space-between;
+    width: 100%;
+}
+.section-container{
+    padding: 30px;
+    border-left: 3px solid #BA1F00;
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.section-container.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+.service-container.right {
+    transform: translateX(100px);
 }
 
 
-/* Contenedor superior */
-.method-header {
-    max-width: 800px;
-    width: 90%;
-    margin: 0 auto 30px;
-    
-}
-
-.method-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #BA1F00;
-    text-decoration: underline;
-    font-family: 'Archivo Black';
-    margin-bottom: 20px;
-}
-
-.method-description {
+.section-subtitle {
     font-size: 1rem;
+    color: #BA1F00; 
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #BA1F00;
+    display: inline-block;
+
+}
+.section-title {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+
+}
+.section-title span{
+    color: #BA1F00;
+    font-style: italic;
+    font-weight: bolder;
+}
+.section-intro {
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin-bottom: 30px;
     line-height: 1.6;
     text-align: justify;
+    font-weight: bold;
 }
-.numbers{
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
-.numbers img{
-    width: 100%;
-    max-width: 1400px;
-}
-/* Contenedor de los pasos */
-.method-steps {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    max-width: 1500px;
-
-    margin: 0 auto;
-    position: relative;
+.cta-button {
+    padding: 15px 30px;
+    background-color: #BA1F00; 
+    color: #E4DDDB;
+    text-decoration: none;
+    font-size: 1.25rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
 }
 
-/* Estilos de cada paso */
-.method-step {
-    width: 18%;
-    text-align: left ;
-    position: relative;
-    padding: 20px;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-}
-
-
-.method-number{
-    display: none;
-}
-
-.method-step h3{
-    margin-bottom: 5px;
-    text-align: center;
+.cta-button:hover {
+    background-color: #E4DDDB;
     color: #BA1F00;
 }
 
+.method {
+    position: relative; 
+    overflow: hidden; 
+}
 
-.method-step:hover {
-    transform: translateY(-5px) scale(1.05); 
-    box-shadow: 0px 10px 20px rgba(255, 69, 0, 0.3); 
+.img-method {
+    width: 40vw;
+    position: absolute;
+    right: -20vw; 
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 100%; 
+    height: auto; 
 }
-.method-step .method-number{
-    transition: transform 0.6s ease, filter 0.5s ease;
+
+
+
+
+.method {
+    background: linear-gradient(180deg,#202020, #BA1F00, #0D0C0C);
+    color: #0D0C0C;
+
 }
-.method-step:hover .method-number{
-    transform: rotate(360deg);
-    filter: brightness(1.5);
+.method-container{
+    border-left: 3px solid #0D0C0C;
 }
+.method-subtitle{
+    color: #E4DDDB;
+    font-weight: bolder;
+    border: 1px solid #E4DDDB;
+}
+.method-title span{
+    color: #E4DDDB;
+    
+}
+.method-cta {
+    background-color: #0D0C0C;
+    color: #BA1F00;
+}
+.method-cta:hover{
+    color: #0D0C0C;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .last-section-container {
-    background-image: url(resources/background2.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+
     min-height: 100vh; 
     display: flex;
     justify-content: center;
     align-items: center; 
     padding: 60px 20px; 
+    background: linear-gradient(180deg, #0D0C0C, #BA1F00);
 }
 
 .last-section-container div {
@@ -246,26 +282,23 @@ section {
 }
 
 .last-section-container h2 {
-    font-size: 8vw;
-    margin: 10px 0;
+    font-size: 6vw;
     color: #E4DDDB ;
-    
+    line-height: 7vw;
     font-weight: 900;
     
 }
 
 .last-section-container p {
-    font-size: 3vw;
+    font-size: 2vw;
     color: #E4DDDB ;
-    margin-top: 10px;
     font-weight: 600; 
-    
+    line-height: normal;
     
 }
 
-.last-section-container b{
-    color: #BA1F00;
-}
+
+
 /* ------------- FOOTER ------------- */
 footer {
     position: relative;
@@ -273,7 +306,7 @@ footer {
     width: 100%;
     padding: 20px;
     display: flex;
-    background-color: #0D0C0C;
+    background: linear-gradient(0deg,#0D0C0C, #202020);
     border-top: 1px solid #BA1F00;
     justify-content: space-between;
     align-items: center;
@@ -319,6 +352,8 @@ html {
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
 }
+
+
 
 /* ------------- RESPONSIVE DESIGN ------------- */
 @media (max-width: 900px) {
@@ -386,36 +421,29 @@ html {
     .description p{
         font-size: 1rem;
     }
-    
-    .method-section{
-        height: auto;
+
+
+    .section-kaos{
+        padding: 10px;
     }
-    .method-steps {
-        flex-direction: column;
-        align-items: center;
+    .section-subtitle{
+        font-size: 0.875rem;
     }
-    .method-number {
-        display: block;
-        width: 50px;
-        height: 50px;
-        background-color: #BA1F00;
-        color: #E4DDDB;
-        font-size: 1.5rem;
-        font-weight: bold;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        margin: 0 auto 10px;
-    }
-    .numbers{
-        display: none;
-    }
-    .method-step {
-        width: 90%;
-        margin-bottom: 20px;
+    .section-title{
+        font-size: 3rem;
     }
 
+    .section-intro{
+        font-size: 1rem;
+    }
+    .cta-button{
+        font-size: 1rem;
+        padding: 7.5px 15px;
+    }
+
+    .section-kaos img{
+        display: none;
+    }
     .last-section-container{
         padding: 0;
     }
@@ -439,7 +467,20 @@ html {
     
 }
 
-
+@media (max-width: 400px) {
+    .section-container{
+        padding: 10px;
+    }
+    .section-subtitle{
+        font-size: 0.75rem;
+    }
+    .section-title{
+        font-size: 2rem;
+    }
+    .cta-button{
+        font-size: 0.875rem;
+    }
+}
 /* Dispositivos con altura menor a 600px */
 @media (max-height: 800px) {
     section {
